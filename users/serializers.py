@@ -12,3 +12,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'last_login': {"read_only": True},
             'date_joined': {"read_only": True},
         }
+    
+
+    def create(self, validated_data):
+        user = CustomUser.objects.create_user(**validated_data)
+        return user
